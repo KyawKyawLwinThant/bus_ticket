@@ -22,7 +22,7 @@ public class Role {
   private Integer id;
   private String name;
 
-  @ManyToMany(mappedBy = "roles")
+  @ManyToMany(mappedBy = "roles",cascade = CascadeType.PERSIST)
   private Set<UserInfo> userInfos
           =new HashSet<>();
 }

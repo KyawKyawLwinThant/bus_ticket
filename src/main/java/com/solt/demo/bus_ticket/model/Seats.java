@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -21,6 +21,12 @@ public class Seats {
     private SeatStatus seatStatus;
 
 
+    public Seats(){
 
+    }
 
+    public Seats(String seatNumber, SeatStatus seatStatus) {
+        this.seatNumber = seatNumber;
+        this.seatStatus = seatStatus;
+    }
 }

@@ -15,12 +15,14 @@ import java.util.Set;
 @Getter
 @Setter
 public class UserInfo {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String firstName;
   private String lastName;
   private String password;
+  @Column(unique = true)
   private String email;
   @Enumerated(EnumType.STRING)
   private Gender gender;
@@ -28,7 +30,7 @@ public class UserInfo {
   private String phoneNumber;
   private String address;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER)
   private Set<Role> roles=
           new HashSet<>();
 

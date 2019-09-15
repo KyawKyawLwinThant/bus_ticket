@@ -7,10 +7,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @IdClass(BusRouteId.class)
@@ -26,5 +27,16 @@ public class BusRoute {
 
   private LocalDateTime departureTime;
   private LocalDateTime arrivalTime;
-  private String busStop;
+
+  @ElementCollection
+  @CollectionTable(name = "Route_Bus_Top")
+  private List<String> busStop=new ArrayList<>();
+
+  public BusRoute(Bus bus, Route route, LocalDateTime departureTime, LocalDateTime arrivalTime, List<String> busStop) {
+    this.bus = bus;
+    this.route = route;
+    this.departureTime = departureTime;
+    this.arrivalTime = arrivalTime;
+    this.busStop = busStop;
+  }
 }

@@ -5,6 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 @Data
 public class BusRouteId implements Serializable {
-  private Bus bus;
-  private Route route;
+  private Integer bus;
+  private Integer route;
 }
